@@ -1,0 +1,43 @@
+@import "https://unpkg.com/open-props" layer(support.design-system);
+@import "https://unpkg.com/open-props/normalize.min.css" layer(support.demo);
+@import "https://unpkg.com/open-props/buttons.min.css" layer(support.demo);
+@import "https://codepen.io/argyleink/pen/RwxJKQa/2256560bf93a131b58b5774e840d51f0.css" layer(support.demo);
+
+/* 
+  enable auto keyword interpolation  
+  https://developer.chrome.com/docs/css-ui/animate-to-height-auto
+*/
+:root {
+  interpolate-size: allow-keywords;
+}
+
+/* enable transitions on password input container */
+.password {
+  transition: 
+    height .3s var(--ease-3),
+    opacity .3s var(--ease-3);
+}
+
+/* reveal password when username is valid */
+.username:not(:has(:user-valid)) + .password {
+  height: 0;
+  opacity: 0;
+  overflow: clip;
+}
+
+@layer support.demo {
+  body {
+    display: grid;
+    place-content: center;
+    padding: var(--size-5);
+    gap: var(--size-5);
+  } 
+  
+  fieldset {
+    display: block;
+    
+    > .password {
+      margin-block: var(--size-3);
+    }
+  }
+}

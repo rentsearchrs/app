@@ -1,0 +1,43 @@
+<app-navbar-rieltor-admin></app-navbar-rieltor-admin>
+<div class="orders-container">
+  <h2>Order Management</h2>
+
+  <!-- Show error message -->
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Show loading spinner -->
+  <div *ngIf="loading" class="spinner">
+    <p>Loading orders...</p>
+  </div>
+
+  <!-- Show orders table -->
+  <table *ngIf="!loading && orders.length > 0" class="orders-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <td>{{ order.id }}</td>
+        <td>{{ order.name }}</td>
+        <td><span [class]="getStatusClass(order.ed_status)">{{ order.ed_status }}</span></td>
+        <td>
+          <button (click)="updateOrderStatus(order.id, 'Processing')">Mark as Processing</button>
+          <button (click)="updateOrderStatus(order.id, 'Completed')">Mark as Completed</button>
+          <button (click)="updateOrderStatus(order.id, 'Canceled')">Cancel</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Show message if no orders are available -->
+  <div *ngIf="!loading && orders.length === 0" class="no-orders">
+    <p>No orders available.</p>
+  </div>
+</div>

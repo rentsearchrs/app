@@ -1,0 +1,57 @@
+/*! CSS Used from: https://xhouse.xcorp.com.ua/plugins/bootstrap/bootstrap.min.css */
+*,::after,::before{box-sizing:border-box;}
+h3{margin-top:0;margin-bottom:.5rem;font-weight:500;line-height:1.2;color:var(--bs-heading-color);}
+h3{font-size:calc(1.3rem + .6vw);}
+@media (min-width:1200px){
+h3{font-size:1.75rem;}
+}
+p{margin-top:0;margin-bottom:1rem;}
+a{color:rgba(var(--bs-link-color-rgb),var(--bs-link-opacity,1));text-decoration:underline;}
+a:hover{--bs-link-color-rgb:var(--bs-link-hover-color-rgb);}
+img{vertical-align:middle;}
+.fs-2{font-size:calc(1.325rem + .9vw)!important;}
+.fs-4{font-size:calc(1.275rem + .3vw)!important;}
+.fw-bold{font-weight:700!important;}
+@media (min-width:1200px){
+.fs-2{font-size:2rem!important;}
+.fs-4{font-size:1.5rem!important;}
+}
+/*! CSS Used from: https://xhouse.xcorp.com.ua/css/styles.min.css */
+a{background-color:rgba(0,0,0,0);}
+img{border-style:none;}
+.width-1-1{width:100%;}
+@media (min-width: 992px){
+.width-1-4-lg{width:25%;}
+.width-63-lg{width:63%;}
+}
+@media (min-width: 1200px){
+.width-3-4-xlg{width:75%;}
+}
+*{box-sizing:border-box;scrollbar-width:thin;scrollbar-color:#6fdb1c #f0f0f0;scrollbar-arrow-color:#6fdb1c;}
+a{color:#151515;text-decoration:none;transition:all .3s;}
+img{display:block;width:100%;object-fit:cover;height:auto;}
+p{margin:0;}
+*+p{margin-top:0;}
+h3{margin:0;}
+.section{padding:40px 20px;}
+@media (width >= 992px){
+.section{padding:60px 40px;}
+}
+.button{display:flex;align-items:center;justify-content:center;margin:0;border-radius:100px;border:1px solid rgba(0,0,0,0);font-size:16px;padding:4px 12px;outline:none;text-transform:none;text-align:center;text-decoration:none;appearance:none;-moz-appearance:none;-webkit-appearance:none;background-color:inherit;height:54px;transition:all .3s;}
+.button:hover{text-decoration:none;}
+.button:focus{outline:none;}
+.button__secondary-reverse{color:#000;background-color:#fff;}
+.button__secondary-reverse:hover{color:#fff;background-color:#000;}
+.banner-section{padding-top:40px;padding-bottom:0;}
+@media (width >= 1024px){
+.banner-section{padding-top:140px;}
+}
+.chat-banner{position:relative;background-color:#7bee1f;color:#000;border-radius:14px;padding:28px 28px 0px 28px;display:flex;flex-direction:column-reverse;align-items:center;gap:26px;}
+@media (width >= 1024px){
+.chat-banner{padding-bottom:28px;align-items:flex-end;}
+}
+.chat-banner__image{left:0;max-width:340px;position:static;}
+@media (width >= 1024px){
+.chat-banner__image{position:absolute;bottom:0;}
+}
+.chat-banner__content{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;}

@@ -1,0 +1,35 @@
+<app-navbar-teamleed-admin></app-navbar-teamleed-admin>
+<div>
+    <h2>Unassigned Orders</h2>
+    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+  
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Status</th>
+          <th>Assign to Realtor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of unassignedOrders">
+          <td>{{ order.id }}</td>
+          <td>{{ order.name }}</td>
+          <td>{{ order.email_adres }}</td>
+          <td>{{ order.phone }}</td>
+          <td>{{ order.ed_status }}</td>
+          <td>
+            <select #realtor (change)="assignOrder(order.id, realtor.value)">
+                <option *ngFor="let realtor of realtors" [value]="realtor.id">
+                  {{ realtor.name }}
+                </option>
+              </select>           
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

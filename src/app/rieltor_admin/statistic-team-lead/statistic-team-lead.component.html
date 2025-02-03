@@ -1,0 +1,40 @@
+<app-navbar-teamleed-admin></app-navbar-teamleed-admin>
+<h2>Team Leader General Statistics</h2>
+
+<!-- General Orders and Apartments Chart -->
+<div *ngIf="generalStats && generalStats.total_orders" style="display: block; width: 100%; height: 400px;">
+    <canvas baseChart
+            [datasets]="generateChartData({
+                'Total Orders': generalStats.total_orders,
+                'Orders Per Day': generalStats.orders_per_day,
+                'Orders Per Week': generalStats.orders_per_week,
+                'Orders Per Month': generalStats.orders_per_month,
+                'Total Apartments': generalStats.total_apartments,
+                'Apartments with Orders': generalStats.apartments_with_orders,
+                'Apartments without Orders': generalStats.apartments_without_orders
+            }, 'General Statistics').datasets"
+            [labels]="generateChartData({
+                'Total Orders': generalStats.total_orders,
+                'Orders Per Day': generalStats.orders_per_day,
+                'Orders Per Week': generalStats.orders_per_week,
+                'Orders Per Month': generalStats.orders_per_month,
+                'Total Apartments': generalStats.total_apartments,
+                'Apartments with Orders': generalStats.apartments_with_orders,
+                'Apartments without Orders': generalStats.apartments_without_orders
+            }, 'General Statistics').labels"
+            [options]="chartOptions"
+            [type]="'bar'">
+    </canvas>
+</div>
+
+<!-- Realtor Statistics Section -->
+<h2>Realtor Statistics</h2>
+<div *ngFor="let realtor of realtorStats" style="display: block; width: 100%; height: 400px;">
+    <h3>{{ realtor.name }}</h3>
+    <canvas baseChart
+            [datasets]="realtor.chartData.datasets"
+            [labels]="realtor.chartData.labels"
+            [options]="chartOptions"
+            [type]="'line'">
+    </canvas>
+</div>

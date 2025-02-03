@@ -1,0 +1,109 @@
+<!-- app.component.html -->
+<div class="form-container">
+    <div class="step-indicator">
+      <div [class.active]="currentStep === 1">Крок 1</div>
+      <div [class.active]="currentStep === 2">Крок 2</div>
+      <div [class.active]="currentStep === 3">Крок 3</div>
+    </div>
+  
+    <form (ngSubmit)="onSubmit()">
+      <!-- Step 1 -->
+      <div *ngIf="currentStep === 1">
+        <h2>Крок 1: Деталі місцезнаходження</h2>
+        <label>
+          Оберіть місто:
+          <select [(ngModel)]="formData.city" name="city" required>
+            <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+          </select>
+        </label>
+  
+        <label>
+          Тип операції:
+          <select [(ngModel)]="formData.operation" name="operation" required>
+            <option *ngFor="let op of operations" [value]="op">{{ op }}</option>
+          </select>
+        </label>
+  
+        <label>
+          Район:
+          <input type="text" [(ngModel)]="formData.district" name="district" required />
+        </label>
+  
+        <label>
+          Вулиця:
+          <input type="text" [(ngModel)]="formData.street" name="street" required />
+        </label>
+      </div>
+  
+      <!-- Step 2 -->
+      <div *ngIf="currentStep === 2">
+        <h2>Крок 2: Деталі нерухомості</h2>
+        <label>
+          Кількість кімнат:
+          <input type="number" [(ngModel)]="formData.rooms" name="rooms" required />
+        </label>
+  
+        <label>
+          Площа (м<sup>2</sup>):
+          <input type="number" [(ngModel)]="formData.area" name="area" required />
+        </label>
+  
+        <label>
+          Поверх:
+          <input type="number" [(ngModel)]="formData.floor" name="floor" required />
+        </label>
+  
+        <label>
+          Всього поверхів:
+          <input type="number" [(ngModel)]="formData.totalFloors" name="totalFloors" required />
+        </label>
+  
+        <label>
+          Ціна:
+          <input type="number" [(ngModel)]="formData.price" name="price" required />
+        </label>
+  
+        <label>
+          Валюта:
+          <select [(ngModel)]="formData.currency" name="currency" required>
+            <option *ngFor="let currency of currencies" [value]="currency">{{ currency }}</option>
+          </select>
+        </label>
+      </div>
+  
+      <!-- Step 3 -->
+      <div *ngIf="currentStep === 3">
+        <h2>Крок 3: Контактні дані та медіа</h2>
+        <label>
+          Ім'я:
+          <input type="text" [(ngModel)]="formData.name" name="name" required />
+        </label>
+  
+        <label>
+          Телефон:
+          <input type="text" [(ngModel)]="formData.phone" name="phone" required />
+        </label>
+  
+        <label>
+          Коротке опитування:
+          <textarea [(ngModel)]="formData.survey" name="survey"></textarea>
+        </label>
+  
+        <label>
+          Завантажити фото (до 10):
+          <input type="file" (change)="onFileChange($event)" multiple accept="image/*" />
+        </label>
+  
+        <label>
+          Потрібна професійна зйомка:
+          <input type="checkbox" [(ngModel)]="formData.professionalShooting" name="professionalShooting" />
+        </label>
+      </div>
+  
+      <div class="navigation-buttons">
+        <button type="button" (click)="prevStep()" [disabled]="currentStep === 1">Попередній</button>
+        <button type="button" (click)="nextStep()" [disabled]="currentStep === 3">Далі</button>
+        <button type="submit" *ngIf="currentStep === 3">Відправити</button>
+      </div>
+    </form>
+  </div>

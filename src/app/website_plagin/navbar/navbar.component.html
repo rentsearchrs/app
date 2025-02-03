@@ -1,0 +1,102 @@
+<header class="header">
+  <a [routerLink]="['/main-page']">
+    <img src="https://xhouse.xcorp.com.ua/assets/icons/logo.svg" alt="XHOUSE Logo" class="logo" />
+  </a>
+  <nav class="nav">
+    <ul class="nav__list">
+      <li class="nav__item">
+        <a [routerLink]="['/product']" class="nav__link">Каталог об’єктів</a>
+      </li>
+      <li class="nav__item">
+        <a href="#" class="nav__link" (click)="toggleDropdown($event, 'sale')">Продаж</a>
+        <ul class="nav__submenu" [class.d-none]="!dropdownStates['sale']">
+          <li *ngFor="let item of saleMenuItems" class="nav__submenu-item">
+            <a [href]="item.link">{{ item.name }}</a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav__item">
+        <a href="#" class="nav__link" (click)="toggleDropdown($event, 'rent')">Оренда</a>
+        <ul class="nav__submenu" [class.d-none]="!dropdownStates['rent']">
+          <li *ngFor="let item of rentMenuItems" class="nav__submenu-item">
+            <a [href]="item.link">{{ item.name }}</a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav__item">
+        <a [routerLink]="['/team']" class="nav__link">Рієлтори</a>
+      </li>
+      <li class="nav__item">
+        <a [routerLink]="['/about']" class="nav__link">Про нас</a>
+      </li>
+      <li class="nav__item">
+        <a [routerLink]="['/work']" class="nav__link">Робота в XHOUSE</a>
+      </li>
+      <li class="nav__item">
+        <a [routerLink]="['/contacts']" class="nav__link">Контакти</a>
+      </li>
+      <li class="nav__item">
+        <a [routerLink]="['/building/plan/home']" class="nav__link">Pемонт будіцвництово дизайн</a>
+      </li>
+      <li class="nav__item">
+        <a [routerLink]="['/clining']" class="nav__link">Клінінг</a>
+      </li>
+    </ul>
+  </nav>
+  <button class="nav-toggle" (click)="toggleMobileMenu()">Меню</button>
+  <div class="nav-mobile" [class.d-none]="!isMobileMenuOpen">
+    <nav>
+      <ul class="nav__list">
+        <li class="nav__item">
+          <a [routerLink]="['/product']" class="nav__link">Каталог об’єктів</a>
+        </li>
+        <li class="nav__item">
+          <a href="#" class="nav__link" (click)="toggleDropdown($event, 'mobileSale')">Продаж</a>
+          <ul class="nav__submenu" [class.d-none]="!dropdownStates['mobileSale']">
+            <li *ngFor="let item of saleMenuItems" class="nav__submenu-item">
+              <a [href]="item.link">{{ item.name }}</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav__item">
+          <a href="#" class="nav__link" (click)="toggleDropdown($event, 'mobileRent')">Оренда</a>
+          <ul class="nav__submenu" [class.d-none]="!dropdownStates['mobileRent']">
+            <li *ngFor="let item of rentMenuItems" class="nav__submenu-item">
+              <a [href]="item.link">{{ item.name }}</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav__item">
+          <a [routerLink]="['/building/plan/home']" class="nav__link">Ремонт, будівництво, дизайн</a>
+        </li>
+        <li class="nav__item">
+          <a [routerLink]="['/work']" class="nav__link">Робота в XHOUSE</a>
+        </li>
+        <li class="nav__item">
+          <a [routerLink]="['/contacts']" class="nav__link">Контакти</a>
+        </li>
+        <li class="nav__item">
+          <a [routerLink]="['/team']" class="nav__link">Рієлтори</a>
+        </li>
+        <li class="nav__item">
+          <a [routerLink]="['/clining']" class="nav__link">Клінінг</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="d-flex flex-column gap-4 px-3">
+      <span class="footer__title">Зв’язатися з нами:</span>
+      <a class="number-link" href="tel:+38 096 123 45 67">+38 063 703 33 98</a>
+      <div class="socials">
+        <a href="viber://chat?number=%2B380637033398" target="_blank" class="socials__link viber">
+          <img class="socials__icon" src="https://xhouse.xcorp.com.ua/assets/icons/viber.svg" alt="Viber" />
+        </a>
+        <a href="https://t.me/+VxEVK5LeiRk0NWMy" target="_blank" class="socials__link telegram">
+          <img class="socials__icon" src="https://xhouse.xcorp.com.ua/assets/icons/telegram.svg" alt="Telegram" />
+        </a>
+        <a href="https://www.instagram.com/xhouse.lviv/" target="_blank" class="socials__link instagram">
+          <img class="socials__icon" src="https://xhouse.xcorp.com.ua/assets/icons/instagram.svg" alt="Instagram" />
+        </a>
+      </div>
+    </div>
+  </div>
+</header>

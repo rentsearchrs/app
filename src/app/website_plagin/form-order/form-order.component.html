@@ -1,0 +1,146 @@
+<div class="modal fade requestModal show" aria-labelledby="exampleModalToggleLabel" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-modal="true" role="dialog" style="display: block;">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="d-flex flex-column">
+                <div class="modal-header">
+                    <div class="">
+                        <span>Крок 1 з 2</span>
+                        <h1 class="modal-title" id="exampleModalToggleLabel">
+                            Формування запиту
+                        </h1>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+            </div>
+            <div class="modal-body scroll">
+                <form class="modal-form" id="form_details"> 
+                                            <div class="d-flex flex-column gap-3">
+                        <span>Категорія</span> 
+                        <div class="d-flex gap-3 flex-column flex-lg-row">
+                            <div class="width-1-1 ">
+                                <select class="select select2-hidden-accessible" multiple="" name="category[]" placeholder="Оберіть тип нерухомості" data-select2-id="1" tabindex="-1" aria-hidden="true">    
+                                                                             <option value="57">Продаж квартир</option>
+                                                                             <option value="59">Оренда квартир</option>
+                                                                             <option value="63">Продаж будинків</option>
+                                                                             <option value="64">Оренда будинків</option>
+                                                                             <option value="61">Продаж кімнат</option>
+                                                                             <option value="62">Оренда кімнат</option>
+                                                                             <option value="67">Продаж комерційної нерухомості</option>
+                                                                             <option value="68">Оренда комерційної нерухомості</option>
+                                                                             <option value="56">Продаж гаражів, парковок</option>
+                                                                             <option value="69">Оренда гаражів, парковок</option>
+                                                                             <option value="66">Продаж землі</option>
+                                                                             <option value="65">Оренда землі</option>
+                                                                             <option value="60">Подобова оренда квартир</option>
+                                                                             <option value="70">Подобова оренда будинків</option>
+                                                                             <option value="72">Подобова оренда кімнат</option>
+                                                                             <option value="73">Готелі, бази відпочинку</option>
+                                                                             <option value="74">Хостели, койко-місця</option>
+                                                                         </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="2" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--multiple select-container" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1" aria-disabled="false"><ul class="select2-selection__rendered"><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" role="searchbox" aria-autocomplete="list" placeholder="Select a state" style="width: 0px;"></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                            </div> 
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column gap-3">
+                        <span>Локація</span> 
+                        <div class="d-flex gap-3 flex-column flex-lg-row">
+                            <div class="width-1-1 ">
+                                <select class="select select2-hidden-accessible" multiple="" name="location[]" placeholder="Оберіть локацію" data-select2-id="3" tabindex="-1" aria-hidden="true">  
+                                    <optgroup class="select2-result-selectable" label="Райони Львова">
+                                        <option value="42">Галицький район</option><option value="43">Франківський район</option><option value="44">Залізничний район</option><option value="45">Шевченківський район</option><option value="46">Личаківський район</option><option value="47">Сихівський район</option>											</optgroup>	
+                                    <optgroup class="select2-result-selectable" label="Інші населені пункти">									
+                                        <option value="6">Белз</option><option value="7">Бібрка</option><option value="8">Борислав</option><option value="9">Буськ</option><option value="10">Великі Мости</option><option value="11">Винники</option><option value="12">Глиняни</option><option value="13">Городок</option><option value="14">Добромиль</option><option value="15">Дрогобич</option><option value="16">Дубляни</option><option value="17">Жидачів</option><option value="18">Жовква</option><option value="19">Золочів</option><option value="20">Кам'янка-Бузька</option><option value="21">Львів</option><option value="22">Мостиська</option><option value="23">Миколаїв</option><option value="24">Новояворівськ</option><option value="25">Новий Розділ</option><option value="26">Перемишляни</option><option value="27">Пустомити</option><option value="28">Рава-Руська</option><option value="29">Радехів</option><option value="30">Рудки</option><option value="31">Самбір</option><option value="32">Сколе</option><option value="33">Сокаль</option><option value="34">Соснівка</option><option value="35">Старий Самбір</option><option value="36">Стрий</option><option value="37">Трускавець</option><option value="38">Угнів</option><option value="39">Хирів</option><option value="40">Шептицький</option><option value="41">Яворів</option><option value="48">Стебник</option><option value="49">Брюховичі</option><option value="50">Зимна Вода</option><option value="52">Івано-Франківськ</option><option value="53">Коломия</option><option value="54">Калуш</option><option value="55">Лапаївка</option><option value="56">Ременів</option><option value="57">Скнилів</option><option value="58">Східниця</option><option value="59">Солонка</option><option value="60">Сокільники</option><option value="61">Бірки</option><option value="65">Виннички</option><option value="66">Давидів</option><option value="67">Малечковичі</option><option value="68">Зубра</option><option value="69">Звенигород</option><option value="70">Верхня Білка</option><option value="71">Миклашів</option><option value="72">Раковець</option><option value="73">Семенівка</option><option value="74">Бережани</option><option value="76">Басівка</option><option value="77">Малехів</option><option value="78">Наварія</option><option value="79">Суховоля</option><option value="84">Броди</option><option value="91">Муроване</option><option value="96">Дорошів</option><option value="101">Мшани</option><option value="107">Рудно</option><option value="108">Бартатів</option><option value="109">Конопниця</option><option value="110">Підрясне</option><option value="111">Гамаліївка</option><option value="112">Селиська</option><option value="113">Борщовичі</option><option value="114">Вислобоки</option><option value="115">Липники</option><option value="116">Страдч</option><option value="117">Ков'ярі</option><option value="118">Турка</option><option value="119">Андріянів</option><option value="120">Мазарня Каранська</option><option value="121">Лисиничі</option><option value="122">Великі грибовичі</option><option value="123">Ставчани</option><option value="124">Судова Вишня</option><option value="125">Шкло</option><option value="126">Лішня</option><option value="127">Вихопні</option><option value="128">Дібрівки</option><option value="129">Пасіки Зубрицькі</option><option value="130">Солуки</option><option value="131">Жовтанці</option><option value="132">Майдан</option><option value="133">Славське</option><option value="134">Пятничани</option><option value="135">Куликів</option><option value="136">Ясниська</option><option value="137">Моршин</option><option value="138">Верешиця</option><option value="139">Старичі</option><option value="141">Бортків</option><option value="142">Красне</option><option value="143">Білогорща</option><option value="144">Жирівка</option><option value="145">Оброшине</option><option value="146">Воля-Бартатівська</option><option value="147">Поріччя</option><option value="148">Ямельня</option><option value="149">Полоничі</option><option value="150">Діброва</option><option value="151">Лісопотік</option><option value="152">Старе Село</option><option value="153">Рясне-Руське</option><option value="154">Лагодів</option><option value="155">Красів</option><option value="156">Липівка</option><option value="157">Вороців</option><option value="158">Ходорів</option><option value="159">Гряда</option><option value="160">Стронятин</option><option value="161">Запитів</option><option value="162">Щирець</option><option value="163">Паланки</option><option value="164">Горішній</option><option value="165">Волиця</option><option value="166">Підбірці</option><option value="167">Сороки-Львівські</option><option value="168">Малі Грибовичі</option><option value="169">Воля-Гамулецька</option><option value="170">Збиранка</option><option value="171">Кожичі</option><option value="172">Рудне</option><option value="173">Холодновідка</option><option value="174">Годовиця</option><option value="175">Малі Підліски</option><option value="176">Родатичі</option><option value="177">Прилбичі</option><option value="178">Зарваниця</option><option value="179">Зашків</option><option value="180">Верхнє Синьовидне</option><option value="181">Плав'я</option><option value="182">Дашава</option><option value="183">Журавно</option><option value="184">Олесько</option><option value="185">Лопатин</option><option value="186">Ямпіль</option><option value="187">Дмитровичі</option><option value="188">Кам'янопіль</option><option value="189">Івано-Франкове</option><option value="190">Сможе</option><option value="191">Комарно</option><option value="192">Унів</option><option value="193">Чишки</option><option value="194">Керниця</option><option value="195">Карачинів</option><option value="196">Товщів</option><option value="197">Милятичі</option><option value="198">Криве</option><option value="199">Скелівка</option><option value="200">Домажир</option><option value="201">Волосянка</option><option value="202">Ялинкувате</option><option value="203">Тухля</option><option value="204">Тухолька</option><option value="205">Нижня Рожанка</option><option value="206">Верхня Романка</option><option value="207">Тернавка</option><option value="208">Новоселиця</option><option value="209">Присліп</option><option value="210">Завийка</option><option value="211">Грабовець</option><option value="212">Хащованя</option>											</optgroup> 
+                                </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="4" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--multiple select-container" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1" aria-disabled="false"><ul class="select2-selection__rendered"><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" role="searchbox" aria-autocomplete="list" placeholder="Select a state" style="width: 0px;"></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                            </div> 
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex flex-column gap-3">
+                        <span>Ціна</span> 
+                        <div class="d-flex gap-3 flex-column flex-lg-row">
+                            
+                            <div class="d-flex gap-3">
+                                <label class="width-1-2">
+                                    <input type="text" class="input" placeholder="Від" name="price_from">
+                                </label>
+                                <label class="width-1-2">
+                                    <input type="text" class="input" placeholder="До" name="price_to">
+                                </label>
+                            </div>
+                            <div class="width-1-1 width-1-3-lg">
+                                <select class="select select2-hidden-accessible" name="price_currency" data-select2-id="5" tabindex="-1" aria-hidden="true">
+                                    <option value="1" selected="" data-select2-id="7">Грн</option>
+                                    <option value="2">$</option>
+                                    <option value="3">€</option>
+                                </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="6" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single select-container" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-price_currency-sn-container"><span class="select2-selection__rendered" id="select2-price_currency-sn-container" role="textbox" aria-readonly="true" title="Грн">Грн</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                            </div>
+                        </div>
+                    </div>  
+                    <div class="d-flex flex-column gap-3">
+                        <span>Площа</span>
+                         
+                        <div class="d-flex gap-3 flex-column flex-lg-row"> 
+                            <div class="d-flex gap-3">
+                                <label class="width-1-2">
+                                    <input type="text" class="input" placeholder="Від" name="area_from">
+                                </label>
+                                <label class="width-1-2">
+                                    <input type="text" class="input" placeholder="До" name="area_to">
+                                </label>
+                            </div>
+                        </div>
+                    </div> 
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="button button__secondary width-1-1" data-bs-target=".requestModalContacts" data-bs-toggle="modal">
+                    Залишити контактні дані
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal_contact" class="modal fade requestModalContacts show" aria-labelledby="exampleModalToggleLabel2" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-modal="true" role="dialog" style="display: block;">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <form class="modal-content" id="form_contact" method="post">
+            <input type="hidden" name="type" value="1">
+            <div class="modal-header">
+                <div class="">
+                    <span>Крок 2 з 2</span>
+                    <h1 class="modal-title" id="exampleModalToggleLabel">
+                        Ваші данні
+                    </h1>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body scroll">
+                <div class="modal-form gap-3">
+                    <label class="width-1-1">
+                        <input type="text" class="input" placeholder="Ім’я" minlength="2" maxlength="20" name="contact_name" required="">
+                    </label>
+                    <label class="width-1-1">
+                        <input type="tel" class="input phone-mask" placeholder="Телефон" name="contact_phone" required="" id="phone">
+                        <div id="invalid_phone" class="text-danger"></div>
+                    </label>
+                    <div class="d-flex gap-3">
+                        <label class="button button__secondary-outline font-secondary width-1-2">
+                            Viber
+                            <input type="checkbox" class="d-none" name="viber">
+                        </label>
+                        <label class="button button__secondary-outline font-secondary width-1-2">
+                            Telegram
+                            <input type="checkbox" class="d-none" name="telegram">
+                        </label>
+                    </div>
+                    <textarea class="textarea scroll" placeholder="Залиште ваші додаткові побажання для пошуку" maxlength="400" name="contact_description"></textarea>
+                    <div id="form_send_status"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="button button__secondary width-1-1 " type="submit" id="btn_send_form">
+                    Згенерувати запит
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="center_carousel">
+	<div
+	  *ngFor="let realtor of realtors"
+	  class="product_wrapper"
+	>
+	  <div class="product_container">
+		<div class="product_3d">
+		  <div class="product_background">
+			<div class="product_img-3d">
+			  <img [src]="realtor.profile_picture1" alt="Realtor Image" />
+			</div>
+		  </div>
+		</div>
+		<div style="margin: 0px 0px 0px 75px; padding: 33px 0px 0px 0px;">
+		  <h2>{{ realtor.username }}</h2>
+		  <h3>{{ realtor.type }}</h3>
+		</div>
+	  </div>
+	  <div class="shadow"></div>
+	</div>
+  </div>
+  

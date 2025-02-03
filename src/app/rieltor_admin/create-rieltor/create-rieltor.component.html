@@ -1,0 +1,36 @@
+<app-navbar-teamleed-admin></app-navbar-teamleed-admin>
+<form [formGroup]="rieltorForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="username">Username</label>
+    <input id="username" formControlName="username" required />
+  </div>
+  <div>
+    <label for="password">Password</label>
+    <input id="password" type="password" formControlName="password" autocomplete="current-password" required />
+  </div>
+  <div>
+    <label for="name">Name</label>
+    <input id="name" formControlName="name" />
+  </div>
+  <div>
+    <label for="type">Type</label>
+    <input id="type" formControlName="type" />
+  </div>
+  <div>
+    <label for="profile_picture1">Profile Picture 1</label>
+    <input id="profile_picture1" formControlName="profile_picture1" />
+  </div>
+  <div>
+    <label for="profile_picture2">Profile Picture 2</label>
+    <input id="profile_picture2" formControlName="profile_picture2" />
+  </div>
+  <div>
+    <label for="quote">Quote</label>
+    <input id="quote" formControlName="quote" />
+  </div>
+  <div>
+    <label for="team_leader_id">Team Leader ID</label>
+    <input id="team_leader_id" type="number" formControlName="team_leader_id" />
+  </div>
+  <button type="submit" [disabled]="!rieltorForm.valid">Create User</button>
+</form>

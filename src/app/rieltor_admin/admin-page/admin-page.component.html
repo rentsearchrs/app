@@ -1,0 +1,21 @@
+<form id="login" (submit)="onSubmit($event)"> 
+  <fieldset id="signin__example"> 
+    <legend>Sign In</legend>
+    <div class="username"> 
+      <label for="input__username">Username</label>
+      <input id="input__username" type="text" required autocomplete="username" placeholder="mcgyver"
+              [(ngModel)]="username" [ngModelOptions]="{standalone: true}">
+    </div>
+    <div class="password">
+      <label for="input__password">Password</label>
+      <input id="input__password" type="password" autocomplete="current-password" required placeholder="········"
+              title="Uppercase, lowercase and a number are required" [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
+    </div>
+    <footer>
+      <menu>
+        <button type="submit" [disabled]="isLoading">Login</button>
+      </menu>
+    </footer>
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  </fieldset>
+</form>

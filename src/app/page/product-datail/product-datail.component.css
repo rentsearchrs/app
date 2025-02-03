@@ -1,0 +1,51 @@
+/* product-datail.component.scss */
+.card {
+    border-radius: 0.75rem;
+  }
+  
+  .card-header {
+    font-weight: 600;
+    font-size: 1.25rem;
+  }
+  
+  .table {
+    margin-top: 20px;
+  }
+  
+  .table-hover tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .form-control {
+    max-width: 150px;
+  }
+  
+  .alert-warning {
+    font-weight: bold;
+  }
+  
+  .badge {
+    padding: 0.5em 0.75em;
+    font-size: 0.9em;
+  }
+  
+  .badge-pending {
+    background-color: #ffc107;
+    color: #212529;
+  }
+  
+  .badge-processing {
+    background-color: #17a2b8;
+    color: #fff;
+  }
+  
+  .badge-completed {
+    background-color: #28a745;
+    color: #fff;
+  }
+  
+  .badge-canceled {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  

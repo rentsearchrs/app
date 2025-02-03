@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Bubbles</title>
+    <style>
+        /* Add necessary styles here to style the bubbles and content */
+    </style>
+</head>
+<body>
+    <div class="main"></div>
+    <div class="footer">
+        <div class="bubbles">
+            <div class="bubble" style="--size:5rem; --distance:9rem; --position:5%; --time:3s; --delay:-3s;"></div>
+            <div class="bubble" style="--size:2rem; --distance:8rem; --position:20%; --time:2s; --delay:-2.3s;"></div>
+            <div class="bubble" style="--size:3rem; --distance:7rem; --position:30%; --time:3s; --delay:-3.2s;"></div>
+            <div class="bubble" style="--size:4rem; --distance:6rem; --position:40%; --time:4s; --delay:-4.1s;"></div>
+            <div class="bubble" style="--size:5rem; --distance:7rem; --position:50%; --time:4s; --delay:-1.3s;"></div>
+            <div class="bubble" style="--size:4rem; --distance:8rem; --position:60%; --time:4s; --delay:-2.2s;"></div>
+            <div class="bubble" style="--size:3rem; --distance:9rem; --position:70%; --time:4s; --delay:-3.6s;"></div>
+            <div class="bubble" style="--size:2rem; --distance:8rem; --position:80%; --time:3s; --delay:-4.4s;"></div>
+            <div class="bubble" style="--size:3rem; --distance:7rem; --position:90%; --time:4s; --delay:-1.8s;"></div>
+            <div class="bubble" style="--size:4rem; --distance:6rem; --position:100%; --time:4s; --delay:-2.6s;"></div>
+        </div>
+        <div class="content">
+            <div>
+                <div>
+                    <b>Каталог об’єктів</b>
+                    <a href="#">Квартири</a>
+                    <a href="#">Будинки</a>
+                    <a href="#">Земля</a>
+                    <a href="#">Кімнати</a>
+                    <a href="#">Добова оренда</a>
+                    <a href="#">Комерція</a>
+                </div>
+                <div>
+                    <b>Агенція XHOUSE</b>
+                    <a href="#">Рієлтори</a>
+                    <a href="#">Про нас</a>
+                    <a href="#">Робота в XHOUSE</a>
+                </div>
+                <div>
+                    <b>Зв’язатися з нами:</b>
+                    <a href="#">+38 063 703 33 98</a>
+                    <a href="#">Vapert</a>
+                    <a href="#">Neesk</a>
+                    <a href="#">Omemanen</a>
+                </div>
+            </div>
+            <div>
+                <a class="image" target="_blank">Офіс:</a>
+                <p>проспект В'ячеслава Чорновола, 63 2поверх, Львів, Львівська область, 79000</p>
+            </div>
+        </div>
+    </div>
+    <svg style="position:fixed; top:100vh;">
+        <defs>
+            <filter id="blob">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"></feGaussianBlur>
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="blob"></feColorMatrix>
+            </filter>
+        </defs>
+    </svg>
+    <script>
+        // JavaScript can dynamically generate the bubbles here
+        const bubblesContainer = document.querySelector('.bubbles');
+        for (let i = 0; i < 128; i++) {
+            const bubble = document.createElement('div');
+            bubble.classList.add('bubble');
+            bubble.style = `
+                --size: ${2 + Math.random() * 4}rem;
+                --distance: ${6 + Math.random() * 4}rem;
+                --position: ${-5 + Math.random() * 110}%;
+                --time: ${2 + Math.random() * 2}s;
+                --delay: ${-1 * (2 + Math.random() * 2)}s;
+            `;
+            bubblesContainer.appendChild(bubble);
+        }
+    </script>
+</body>
+</html>

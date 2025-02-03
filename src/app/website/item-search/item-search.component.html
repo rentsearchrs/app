@@ -1,0 +1,284 @@
+<app-navbar></app-navbar>
+<div class="searchbar">
+  <form class="searchbar-form">
+    <!-- City Search -->
+    <div class="input-group spacer">
+      <input id="city-search" type="text" class="form-control" placeholder="City, Town, ZIP Code" />
+      <span class="input-group-btn">
+        <div id="toggle-suburbs" class="btn-group">
+          <button
+            id="btn-suburbs"
+            type="button"
+            class="btn btn-default dropdown-toggle button-padding"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li>
+              <input
+                type="text"
+                class="form-control"
+                id="suburb-search"
+                placeholder="e.g., Blankenese, Spandau, etc."
+              />
+            </li>
+            <li><label for="">Popular Suburbs</label></li>
+            <li>
+              <div class="checkbox">
+                <label><input type="checkbox" /> Barmbek</label>
+              </div>
+            </li>
+            <li>
+              <div class="checkbox">
+                <label><input type="checkbox" /> Eimsbüttel</label>
+              </div>
+            </li>
+            <li>
+              <div class="checkbox">
+                <label><input type="checkbox" /> Hoheluft</label>
+              </div>
+            </li>
+            <li>
+              <div class="checkbox">
+                <label><input type="checkbox" /> Wandsbek</label>
+              </div>
+            </li>
+            <li>
+              <div class="checkbox">
+                <label><input type="checkbox" /> Winterhude</label>
+              </div>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li>
+              <button type="button" class="btn btn-link">More Suburbs</button>
+            </li>
+          </ul>
+        </div>
+      </span>
+    </div>
+
+    <!-- Price Section -->
+    <div id="toggle-price" class="btn-group spacer">
+      <button
+        id="btn-price"
+        type="button"
+        class="btn btn-default dropdown-toggle button-padding"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        Price <span class="caret"></span>
+      </button>
+      <ul id="container-price" class="dropdown-menu">
+        <div id="input-price">
+          <label for="price">Price Range</label>
+          <li>
+            <div class="checkbox"><label><input type="checkbox" /> Up to 400 €</label></div>
+          </li>
+          <li>
+            <div class="checkbox"><label><input type="checkbox" /> 400 - 800 €</label></div>
+          </li>
+          <li>
+            <div class="checkbox"><label><input type="checkbox" /> 800 - 1100 €</label></div>
+          </li>
+          <li>
+            <div class="checkbox"><label><input type="checkbox" /> 1100 - 1500 €</label></div>
+          </li>
+          <li>
+            <div class="checkbox"><label><input type="checkbox" /> Over 1500 €</label></div>
+          </li>
+          <li role="separator" class="divider"></li>
+          <li class="von-bis-container">
+            <div class="input-group von">
+              <input type="text" class="form-control" placeholder="From" />
+              <span class="input-group-addon">€</span>
+            </div>
+            <p>-</p>
+            <div class="input-group bis">
+              <input type="text" class="form-control" placeholder="To" />
+              <span class="input-group-addon">€</span>
+            </div>
+          </li>
+        </div>
+      </ul>
+    </div>
+
+    <!-- Rooms Section -->
+    <div id="toggle-rooms" class="btn-group spacer">
+      <button
+        id="btn-rooms"
+        type="button"
+        class="btn btn-default dropdown-toggle button-padding"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        Rooms <span class="caret"></span>
+      </button>
+      <ul id="container-rooms" class="dropdown-menu">
+        <div id="input-rooms">
+          <label for="rooms">Number of Rooms</label>
+          <li>
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-default">1+</button>
+              <button type="button" class="btn btn-default">2+</button>
+              <button type="button" class="btn btn-default">3+</button>
+              <button type="button" class="btn btn-default">4+</button>
+              <button type="button" class="btn btn-default">5+</button>
+              <button type="button" class="btn btn-default">6+</button>
+            </div>
+          </li>
+        </div>
+      </ul>
+    </div>
+
+    <!-- Features Section -->
+    <div id="toggle-features" class="btn-group spacer">
+      <button
+        id="btn-features"
+        type="button"
+        class="btn btn-default dropdown-toggle button-padding"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        Features <span class="caret"></span>
+      </button>
+      <ul id="container-features" class="dropdown-menu">
+        <div id="input-features">
+          <label for="features">Features</label>
+          <li>
+            <div class="checkbox"><label><input type="checkbox" /> Fitted Kitchen</label></div>
+          </li>
+          <li>
+            <div class="checkbox"><label><input type="checkbox" /> Balcony/Terrace</label></div>
+          </li>
+          <li>
+            <div class="checkbox"><label><input type="checkbox" /> Basement</label></div>
+          </li>
+          <li>
+            <div class="checkbox"><label><input type="checkbox" /> Parking Space</label></div>
+          </li>
+          <li>
+            <div class="checkbox"><label><input type="checkbox" /> Guest WC</label></div>
+          </li>
+          <li>
+            <button type="button" class="btn btn-link">More Features</button>
+          </li>
+        </div>
+      </ul>
+    </div>
+
+    <!-- Living Space Section -->
+    <div id="toggle-space" class="btn-group spacer">
+      <button
+        id="btn-space"
+        type="button"
+        class="btn btn-default dropdown-toggle button-padding"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        Living Space <span class="caret"></span>
+      </button>
+      <ul id="container-space" class="dropdown-menu">
+        <div id="input-space">
+          <label for="space">Living Space</label>
+          <li class="von-bis-container">
+            <div class="input-group von">
+              <input type="text" class="form-control" placeholder="From" />
+              <span class="input-group-addon">m²</span>
+            </div>
+            <p>-</p>
+            <div class="input-group bis">
+              <input type="text" class="form-control" placeholder="To" />
+              <span class="input-group-addon">m²</span>
+            </div>
+          </li>
+        </div>
+      </ul>
+    </div>
+  </form>
+</div>
+
+  <div class="container">
+    <!-- Page Title -->
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="text-center page-title">Apartment Listings</h1>
+      </div>
+    </div>
+  
+    <!-- Apartments Grid -->
+    <div class="row">
+      <div class="col-md-3" *ngFor="let apartment of paginatedApartments">
+        <div class="product-container">
+          <div class="product-image">
+            <span class="hover-link"></span>
+            <a [routerLink]="['/item', apartment.id]" class="product-link">View Details</a>
+            <img
+              class="img-responsive"
+              [src]="apartment.files?.[0]?.file_path || 'default.jpg'"
+              [alt]="apartment.title"
+            />
+          </div>
+          <div class="product-description">
+            <div class="product-label">
+              <div class="product-name">
+                <p class="price">{{ apartment.price }}</p>
+                <h1>{{ apartment.title }}</h1>
+              </div>
+            </div>
+            <div class="product-option">
+              <div class="product-size">
+                <h3>Details</h3>
+                <p>Rooms: {{ apartment.room }}</p>
+                <p>Square: {{ apartment.square }} m²</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Pagination Controls -->
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <ul class="pagination">
+          <li
+            class="page-item"
+            [class.disabled]="currentPage === 1"
+            (click)="goToPage(currentPage - 1)"
+          >
+            <span class="page-link">Previous</span>
+          </li>
+          <li
+            class="page-item"
+            *ngFor="let page of [].constructor(totalPages()); let i = index"
+            [class.active]="currentPage === i + 1"
+            (click)="goToPage(i + 1)"
+          >
+            <span class="page-link">{{ i + 1 }}</span>
+          </li>
+          <li
+            class="page-item"
+            [class.disabled]="currentPage === totalPages()"
+            (click)="goToPage(currentPage + 1)"
+          >
+            <span class="page-link">Next</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  
+    <!-- No Data Template -->
+    <ng-template #noData>
+      <div class="col-md-12">
+        <p class="text-center">No apartments available at the moment.</p>
+      </div>
+    </ng-template>
+    <app-telegram-afisha></app-telegram-afisha>
+  </div>

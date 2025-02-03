@@ -1,0 +1,91 @@
+<!-- Button to Open the Popup -->
+<section class="section d-flex flex-column align-items-center position-relative animation-section">
+  <div class="animation-overlay"></div>
+  <div class="d-flex flex-column align-items-center gap-3 width-1-1 width-1-2-lg z-1">
+    <h2 class="fw-bold fs-1 text-center w-75">Ваш запит – наша дія</h2>
+    <p class="text-center">
+      Агенти XHOUSE підбируть нерухомість, що відповідає вашим вимогам,
+      беручи всі клопоти на себе.
+    </p>
+    <p>Ви отримуєте ідеальний об’єкт без жодних зусиль</p>
+    <button 
+      class="button button__secondary width-1-1 width-1-2-lg requestButton" 
+      id="openPopupButton"
+      (click)="openPopup()"
+    >
+      Сформувати запит
+    </button>
+  </div> 
+  <div class="position-relative animation-container">
+    <img class="animation-logo" src="https://xhouse.xcorp.com.ua/assets/images/animation-logo.svg" alt="">
+    <div class="animation-inner">
+      <img class="animation-inner__1" src="https://xhouse.xcorp.com.ua/assets/images/animation-pictures/anim-pic-1.svg" alt="">
+      <img class="animation-inner__2" src="https://xhouse.xcorp.com.ua/assets/images/animation-pictures/anim-pic-2.svg" alt="">
+      <img class="animation-inner__3" src="https://xhouse.xcorp.com.ua/assets/images/animation-pictures/anim-pic-3.svg" alt="">
+    </div>
+    <div class="animation-outer">
+      <img class="animation-outer__1" src="https://xhouse.xcorp.com.ua/assets/images/animation-pictures/anim-pic-1.svg" alt="">
+      <img class="animation-outer__2" src="https://xhouse.xcorp.com.ua/assets/images/animation-pictures/anim-pic-2.svg" alt="">
+      <img class="animation-outer__3" src="https://xhouse.xcorp.com.ua/assets/images/animation-pictures/anim-pic-3.svg" alt="">
+      <img class="animation-outer__4" src="https://xhouse.xcorp.com.ua/assets/images/animation-pictures/anim-pic-4.svg" alt="">
+      <img class="animation-outer__5" src="https://xhouse.xcorp.com.ua/assets/images/animation-pictures/anim-pic-5.svg" alt="">
+    </div>
+  </div>
+</section>
+<!-- Popup -->
+<div 
+  id="callback-popup" 
+  class="popup standard" 
+  [class.visible]="isPopupOpen"
+>
+  <div class="pop-up-back-motor" (click)="closePopup()"></div>
+  <div class="application-form-box pop-up">
+    <div class="pop_up-title">
+      <div class="popup-title">Залишайте заявку</div>
+      <div class="text_14px-3 centr-mobile">
+        Менеджер відповість на будь-які питання, повʼязані з нерухомістю
+      </div>
+    </div>
+    <div class="form-block w-form">
+      <form (submit)="onSubmitPopupForm($event)">
+        <input
+          class="text-field w-input"
+          maxlength="256"
+          name="name"
+          placeholder="Ваше імʼя"
+          type="text"
+          required
+        />
+        <input
+          class="fieldphone w-input"
+          maxlength="256"
+          name="phone"
+          placeholder="Ваш номер телефону*"
+          type="tel"
+          required
+        />
+        <input
+          class="text-field w-input"
+          maxlength="256"
+          name="email_adres"
+          placeholder="Ваш email*"
+          type="email"
+          required
+        />
+        <textarea
+          class="text-field text-field-big w-input"
+          maxlength="256"
+          name="message"
+          placeholder="Деталі звернення, яку квартиру шукаєте?"
+        ></textarea>
+        <button type="submit" class="form-button w-button">Залишити заявку</button>
+      </form>
+    </div>
+    <img 
+      src="https://cdn.prod.website-files.com/66146052cb5b10b39f3b4f32/66156f8cdf8018f606a7354f_Vector.svg" 
+      alt="Close" 
+      class="pop-up-exit-button-transmission" 
+      (click)="closePopup()"
+    >
+  </div>
+</div>

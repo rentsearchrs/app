@@ -1,0 +1,51 @@
+<app-navbar-owner></app-navbar-owner>
+
+<!-- Add Channel Form -->
+<div>
+    <h3>Add New Channel</h3>
+    <label for="category">Category:</label>
+    <select [(ngModel)]="category" id="category" required>
+      <option *ngFor="let option of categories" [value]="option">{{ option }}</option>
+    </select>
+    
+    <label for="typeDeal">Type Deal:</label>
+    <select [(ngModel)]="typeDeal" id="typeDeal" required>
+      <option *ngFor="let option of typeDeals" [value]="option">{{ option }}</option>
+    </select>
+    
+    <label for="typeObject">Type Object:</label>
+    <select [(ngModel)]="typeObject" id="typeObject" required>
+      <option *ngFor="let option of typeObjects" [value]="option">{{ option }}</option>
+    </select>
+
+    <label for="channelId">Channel ID:</label>
+    <input type="text" [(ngModel)]="channelId" id="channelId" required>
+
+    <label for="priceFrom">Price From:</label>
+    <input type="number" [(ngModel)]="priceFrom" id="priceFrom">
+
+    <label for="priceTo">Price To:</label>
+    <input type="number" [(ngModel)]="priceTo" id="priceTo">
+
+    <label for="locationType">Location Type:</label>
+    <select [(ngModel)]="locationType" id="locationType">
+        <option value="all">All</option>
+        <option value="city">City</option>
+        <option value="outskirts_of_the_city">околиці міста</option>
+        <option value="region">Region</option>
+    </select>
+
+    <button (click)="addChannel()">Add Channel</button>
+</div>
+
+<!-- Display Existing Channels -->
+<div>
+    <h3>Existing Channels</h3>
+    <ul>
+        <li *ngFor="let channel of channels">
+            {{ channel.category }} - {{ channel.type_deal }}  {{channel.type_object}} ({{ channel.channel_id }}) {{channel.price_from}} {{channel.price_to}} {{channel.location_type}}
+            <button (click)="deleteChannel(channel.id)">Delete</button>
+        </li>
+    </ul>
+</div>
+

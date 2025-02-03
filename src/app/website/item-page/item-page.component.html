@@ -1,0 +1,78 @@
+<app-navbar></app-navbar>
+<app-image-slider [photos]="product?.files"></app-image-slider>
+<!-- Product Details Section -->
+<div class="object__header">
+  <div>
+    <span class="section__descr truncate-two-string">{{ product.location_date }}</span>
+    <h1 class="section__title truncate-two-string">{{ product.title }}</h1>
+    <ul class="card__tips">
+      <li class="card__tip">{{ product.room }} кімнат</li>
+      <li class="card__tip">{{ product.square }} м²</li>
+      <li class="card__tip">{{ product.floor }}</li>
+    </ul>
+  </div>
+  <span class="object__price">{{ product.price }}</span>
+</div>
+<div class="object__owner d-flex flex-column gap-3 flex-lg-row justify-content-between">
+  <div class="object__owner-info">
+    <img
+      class="object__owner-image"
+      [src]="product.rieltor.profile_picture1"
+      alt="Realtor Image"
+    />
+    <div class="d-flex flex-column flex-md-row align-items-baseline gap-2">
+      <span class="object__owner-name">{{ product.rieltor.username }}</span>
+      <span class="object__owner-position">{{ product.rieltor.type }}</span>
+    </div>
+  </div>
+  <div class="d-flex gap-3 justify-content-between">
+    <div>
+      <a [href]="'tel:' + product.rieltor?.phone" class="btn btn-primary" *ngIf="product.rieltor?.phone">Call Realtor</a>
+    </div>
+  </div>
+</div>
+
+<div class="object__description width-1-1 width-3-4-md">
+  <span class="fs-4 fw-bold">Опис</span>
+  <p>{{ product.description }}</p>
+</div>
+<div class="container mt-4">
+    <h2 class="text-center mb-3">Recommended Apartments</h2>
+    <div class="row">
+      <div class="recommendation-slider d-flex overflow-auto">
+        <div
+          class="col-md-3 me-3"
+          *ngFor="let recommendation of recommendations"
+          style="min-width: 250px;"
+        >
+          <div class="product-container">
+            <div class="product-image">
+              <a [routerLink]="['/item', recommendation.id]" class="product-link">View Details</a>
+              <img
+                class="img-responsive"
+                [src]="recommendation.files?.[0]?.file_path || 'default.jpg'"
+                [alt]="recommendation.title"
+              />
+            </div>
+            <div class="product-description">
+              <h3 class="truncate-two-lines">{{ recommendation.title }}</h3>
+              <p class="price">{{ recommendation.price }}</p>
+              <p>{{ recommendation.room }} rooms, {{ recommendation.square }} m²</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<app-telegram-afisha></app-telegram-afisha>
+<iframe
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2990.274257380938!2d-70.56068388481569!3d41.45496659976631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e52963ac45bbcb%3A0xf05e8d125e82af10!2sDos%20Mas!5e0!3m2!1sen!2sus!4v1671220374408!5m2!1sen!2sus"
+  width="100%"
+  height="450"
+  style="border:0;"
+  allowfullscreen=""
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade"
+></iframe>
+
+<app-footer></app-footer>

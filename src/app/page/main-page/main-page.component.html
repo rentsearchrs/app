@@ -1,0 +1,328 @@
+<app-navbar-owner></app-navbar-owner>
+<div class="admin-panel">
+  <h1>Admin Panel - Apartments</h1>
+
+  <!-- Trap Blacklist Management -->
+  <div class="admin-section">
+    <h2>Blacklist Words (Trap)</h2>
+    <input type="text" [(ngModel)]="newTrapWord" placeholder="Enter trap word">
+    <button (click)="addTrapWord()">Add to Blacklist</button>
+
+    <ul>
+      <li *ngFor="let word of trapWords">
+        {{ word }}
+        <button (click)="removeTrapWord(word)">Remove</button>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Stop Word Management -->
+  <div class="admin-section">
+    <h2>Stop Words (Flag for Review)</h2>
+    <input type="text" [(ngModel)]="newStopWord" placeholder="Enter stop word">
+    <button (click)="addStopWord()">Add Stop Word</button>
+
+    <ul>
+      <li *ngFor="let word of stopWords">
+        {{ word }}
+        <button (click)="removeStopWord(word)">Remove</button>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Apartments Requiring Verification -->
+  <div class="admin-section">
+    <h2>Ads Requiring Verification</h2>
+    <div *ngIf="verificationApartments.length === 0">No ads requiring verification.</div>
+    <div *ngFor="let apartment of verificationApartments" class="apartment-item">
+      <p><strong>{{ apartment.title }}</strong> (ID: {{ apartment.id }})</p>
+      <p>Status: {{ apartment.ad_status }}</p>
+      <p>Reason: Stop words detected</p>
+      <button (click)="approveApartment(apartment.id)">Approve</button>
+      <button (click)="rejectApartment(apartment.id)">Reject</button>
+    </div>
+  </div>
+
+<!-- ✅ Parser Controls -->
+  <h3>Parser Controls</h3>
+  <button (click)="startParser()">Start Parser</button>
+  <button (click)="stopParser()">Stop Parser</button>
+
+  <!-- ✅ Auto Posting Controls -->
+  <h3>Auto-Posting Controls</h3>
+  <button (click)="startAutoPosting()">Start Auto Posting</button>
+  <button (click)="stopAutoPosting()">Stop Auto Posting</button>
+
+</div>
+<div class="admin-panel">
+  <h1>Admin Panel - Apartments</h1>
+
+  <!-- Filter Section -->
+  <div class="filters">
+    <input
+      type="text"
+      [(ngModel)]="filterText"
+      (input)="onFilterChange()"
+      placeholder="Filter by title or description"
+      class="filter-input"
+    />
+
+    <!-- Owner Dropdown -->
+    <select [(ngModel)]="owner" (change)="onFilterChange()" class="filter-input">
+      <option value="">All Owners</option>
+      <option *ngFor="let option of ownerOptions" [value]="option">{{ option }}</option>
+    </select>
+
+    <!-- Type Deal Dropdown -->
+    <select [(ngModel)]="typeDeal" (change)="onFilterChange()" class="filter-input">
+      <option value="">All Deals</option>
+      <option *ngFor="let option of typeDealOptions" [value]="option">{{ option }}</option>
+    </select>
+
+    <select [(ngModel)]="typeObject" (change)="onFilterChange()" class="filter-input">
+      <option value="">All Types</option>
+      <option *ngFor="let option of typeObjectOptions" [value]="option">{{ option }}</option>
+    </select>
+
+    <h3>Select District(s):</h3>
+    <select [(ngModel)]="selectedDistricts" (change)="onDistrictChange()" multiple>
+      <option *ngFor="let district of districts" [value]="district">
+        {{ district }}
+      </option>
+    </select>
+  
+    <!-- City Selector -->
+    <h3>Select City/Cities:</h3>
+    <select [(ngModel)]="selectedCities" (change)="onCityChange()" multiple>
+      <option *ngFor="let city of availableCities" [value]="city">
+        {{ city }}
+      </option>
+    </select>
+
+    <input
+      type="number"
+      [(ngModel)]="priceMin"
+      (input)="onFilterChange()"
+      placeholder="Min Price"
+      class="filter-input"
+    />
+
+    <input
+      type="number"
+      [(ngModel)]="priceMax"
+      (input)="onFilterChange()"
+      placeholder="Max Price"
+      class="filter-input"
+    />
+    <input
+    type="number"
+    [(ngModel)]="filterById"
+    (input)="onFilterChange()"
+    placeholder="Filter by ID"
+    class="filter-input"
+    />
+    <input
+      type="text"
+      [(ngModel)]="rooms"
+      (input)="onFilterChange()"
+      placeholder="Filter by Rooms"
+      class="filter-input"
+    />
+    <div class="status-buttons">
+      <button (click)="getAllAds()">All Ads</button>
+      <button (click)="getAdsByStatus('new')">New Ads</button>
+      <button (click)="getAdsByStatus('activation_soon')">Activation Soon</button>
+      <button (click)="getAdsByStatus('inactive')">Inactive Ads</button>
+      <button (click)="getAdsByStatus('successful')">Successful Ads</button>
+      <button (click)="getAdsByStatus('spam')">Spam</button>
+      <button class="btn btn-primary" (click)="autoAssign()">Distribute Apartments</button>
+    </div>
+  </div>
+
+      <!-- Apartments List Section -->
+      <!-- Apartments List Section -->
+      <div *ngIf="filteredApartments.length === 0" class="no-apartments">
+        No apartments found.
+      </div>
+    
+      <div *ngFor="let apartment of filteredApartments" class="apartment-item">
+        <div class="apartment-header" (click)="apartment.expanded = !apartment.expanded">
+          <p><strong>{{ apartment.title }}</strong></p>
+          <p>ID: {{ apartment.id }}</p>
+          <p>Type Deal: {{ apartment.type_deal }}</p>
+          <p>Type Object: {{ apartment.type_object }}</p>
+          <p>Status: {{ apartment.ad_status }}</p>
+          <button>{{ apartment.expanded ? 'Collapse' : 'Expand' }}</button>
+        </div>
+      
+        <!-- Expanded Section -->
+        <div *ngIf="apartment.expanded" class="apartment-details">
+        <input type="file" (change)="uploadImages($event, apartment.id)" multiple />
+    
+        <!-- Photo Drag-and-Drop Section -->
+        <div
+        cdkDropList
+        (cdkDropListDropped)="reorderImages($event, apartment.id)"
+        class="image-gallery"
+    >
+    <div *ngFor="let image of apartment.files" cdkDrag>
+      <img [src]="image.file_path" [alt]="apartment.title" class="gallery-image" />
+      
+      <!-- Button to apply watermark -->
+      <button (click)="applyWatermark(image.id, apartment.id)">Apply Watermark</button>
+      <button (click)="removeWatermarkAI(image.id, apartment.id)">Remove Watermark (AI)</button>
+
+      <!-- Button to delete the image -->
+      <button (click)="deleteImage(image.id)">Delete</button>
+    </div>
+    </div>
+    
+
+    <div class="apartment-info">
+      <p>{{ apartment.id }}</p>
+      <p> {{ apartment.type_deal }}</p>
+      <p> {{ apartment.type_object }}</p>
+      <p>{{ apartment.ad_status }} </p>
+      <!-- Status Update -->
+      <label for="statusSelect">Update Status:</label>
+      <select
+        id="statusSelect"
+        [ngModel]="apartment.ad_status"
+        (change)="onStatusChange($event, apartment.id)"
+      >
+        <option *ngFor="let status of statusOptions" [value]="status">
+          {{ status | titlecase }}
+        </option>
+      </select>
+
+      <form (ngSubmit)="updateFixFields(apartment.id, { 
+        title_fix: apartment.title_fix,
+        price_fix: apartment.price_fix,
+        location_date_fix: apartment.location_date_fix,
+        features_fix: apartment.features_fix,
+        owner_fix: apartment.owner_fix,
+        square_fix: apartment.square_fix,
+        room_fix: apartment.room_fix,
+        residential_complex_fix: apartment.residential_complex_fix,
+        floor_fix: apartment.floor_fix,
+        superficiality_fix: apartment.superficiality_fix,
+        classs_fix: apartment.classs_fix,
+        url_fix: apartment.url_fix,
+        user_fix: apartment.user_fix,
+        phone_fix: apartment.phone_fix
+      })">
+
+      <p>{{ apartment.title }}</p>
+      <label>Title (Fixed): {{ apartment.title_fix }}</label>
+      <input type="text" [(ngModel)]="apartment.title_fix" name="title_fix" [ngModelOptions]="{standalone: true}">
+
+      <p>{{ apartment.price }}</p>
+      <label>Price (Fixed): {{ apartment.price_fix }}</label>
+      <input type="text" [(ngModel)]="apartment.price_fix" name="price_fix" [ngModelOptions]="{standalone: true}">
+
+      <p>{{ apartment.location_date }}</p>
+      <label>Location Date (Fixed): {{ apartment.location_date_fix }}</label>
+      <input type="text" [(ngModel)]="apartment.location_date_fix" name="location_date_fix" [ngModelOptions]="{standalone: true}">
+
+      <p>{{ apartment.features }}</p>
+      <label>Features (Fixed): {{ apartment.features_fix }}</label>
+      <input type="text" [(ngModel)]="apartment.features_fix" name="features_fix" [ngModelOptions]="{standalone: true}">
+
+      <p>{{ apartment.owner }}</p>
+      <label>Owner (Fixed): {{ apartment.owner_fix }}</label>
+      <input type="text" [(ngModel)]="apartment.owner_fix" name="owner_fix" [ngModelOptions]="{standalone: true}">
+
+      <p>{{ apartment.square }}</p>
+      <label>Square (Fixed): {{ apartment.square_fix }}</label>
+      <input type="text" [(ngModel)]="apartment.square_fix" name="square_fix" [ngModelOptions]="{standalone: true}">
+
+      <p>{{ apartment.rooms }}</p>
+      <label>Room (Fixed): {{ apartment.room_fix }}</label>
+      <input type="text" [(ngModel)]="apartment.room_fix" name="room_fix" [ngModelOptions]="{standalone: true}">
+
+      <p>{{ apartment.residential_complex }}</p>
+      <label>Residential Complex (Fixed): {{ apartment.residential_complex_fix }}</label>
+      <input type="text" [(ngModel)]="apartment.residential_complex_fix" name="residential_complex_fix" [ngModelOptions]="{standalone: true}">
+
+      <p>{{ apartment.floor }}</p>
+      <label>Floor (Fixed): {{ apartment.floor_fix }}</label>
+      <input type="text" [(ngModel)]="apartment.floor_fix" name="floor_fix" [ngModelOptions]="{standalone: true}">
+
+      <p>{{ apartment.superficiality }}</p>
+      <label>Superficiality (Fixed): {{ apartment.superficiality_fix }}</label>
+      <input type="text" [(ngModel)]="apartment.superficiality_fix" name="superficiality_fix" [ngModelOptions]="{standalone: true}">
+
+      <p>{{ apartment.classs }}</p>
+      <label>Class (Fixed): {{ apartment.classs_fix }}</label>
+      <input type="text" [(ngModel)]="apartment.classs_fix" name="classs_fix" [ngModelOptions]="{standalone: true}">
+
+      <p>{{ apartment.url }}</p>
+      <label>URL (Fixed): {{ apartment.url_fix }}</label>
+      <input type="text" [(ngModel)]="apartment.url_fix" name="url_fix" [ngModelOptions]="{standalone: true}">
+
+      <label>On Map (Fixed):</label>
+      <input type="text" [(ngModel)]="apartment.on_map_fix" name="on_map_fix" [ngModelOptions]="{standalone: true}">
+
+      <p>{{ apartment.user }}</p>
+      <label>User (Fixed): {{ apartment.user_fix }}</label>
+      <input type="text" [(ngModel)]="apartment.user_fix" name="user_fix" [ngModelOptions]="{standalone: true}">
+
+      <p>{{ apartment.phone }}</p>
+      <label>Phone (Fixed): {{ apartment.phone_fix }}</label>
+      <input type="text" [(ngModel)]="apartment.phone_fix" name="phone_fix" [ngModelOptions]="{standalone: true}">
+
+      <p>{{ apartment.id_olx }}</p>
+      <label>OLX ID (Fixed): {{ apartment.id_olx_fix }}</label>
+      <input type="text" [(ngModel)]="apartment.id_olx_fix" name="id_olx_fix" [ngModelOptions]="{standalone: true}">
+
+      <p>{{ apartment.comment }}</p>
+      <label>Comment (Fixed):</label>
+      <input type="text" [(ngModel)]="apartment.comment_fix" name="comment_fix" [ngModelOptions]="{standalone: true}">
+
+      <button type="submit">Save</button>
+      <button *ngIf="apartment.ad_status === 'successful'" (click)="publishToChannel(apartment.id)">
+        Publish to Channel
+      </button>
+    </form>
+    <div class="template-management">
+      <h2>Manage Templates</h2>
+      
+      <!-- Form to create or edit a template -->
+      <form (ngSubmit)="saveTemplate()">
+          <input [(ngModel)]="templateTitle" name="title" placeholder="Template Title" required>
+          <textarea [(ngModel)]="templateContent" name="content" placeholder="Template Content" required></textarea>
+          <button type="submit">{{ selectedTemplate ? "Update" : "Add" }} Template</button>
+      </form>
+  
+      <!-- List of existing templates -->
+      <ul>
+          <li *ngFor="let template of templates">
+              <h3>{{ template.name }}</h3>
+              <p>{{ template.template_text }}</p>
+              <button (click)="editTemplate(template)">Edit</button>
+              <button (click)="deleteTemplate(template.id)">Delete</button>
+          </li>
+      </ul>
+  </div>
+  
+  <div class="apartment-item">
+      <!-- Publishing to Channel -->
+      <div>
+          <label for="templateSelect">Select Template:</label>
+          <select id="templateSelect" [(ngModel)]="selectedTemplateName">
+              <option *ngFor="let template of templates" [value]="template.name">
+                  {{ template.name }}
+              </option>
+          </select>
+          <button (click)="publishToChannel(apartment.id)">Publish to Channel</button>
+      </div>
+  </div>
+    </div>
+    <div class="comments">
+      <p><strong>Description:</strong> {{ apartment.description }}</p>
+      
+    </div>
+  </div>
+  </div>
+  
+</div>

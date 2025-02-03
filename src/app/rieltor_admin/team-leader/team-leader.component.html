@@ -1,0 +1,46 @@
+<app-navbar-teamleed-admin></app-navbar-teamleed-admin>
+<div class="team-leader-container">
+    <h2>Welcome, Team Leader</h2>
+  
+  
+    <pre *ngIf="realtors | json"></pre>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Username</th>
+          <th>Managed Apartments</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let realtor of realtors">
+          <td>{{ realtor.id }}</td>
+          <td>{{ realtor.name }}</td>
+          <td>{{ realtor.username }}</td>
+          <td>{{ realtor.apartments.length || 0 }}</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    
+  
+    <div class="assign-realtor">
+      <h3>Assign Realtor to Your Team</h3>
+      <form (submit)="onAssignRealtor($event)">
+        <div class="form-group">
+          <label for="realtor-id">Realtor ID:</label>
+          <input
+            id="realtor-id"
+            type="number"
+            [(ngModel)]="newRealtorId"
+            name="realtorId"
+            class="form-control"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Assign Realtor</button>
+      </form>
+    </div>
+  </div>
+  

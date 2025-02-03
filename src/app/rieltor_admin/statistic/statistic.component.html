@@ -1,0 +1,79 @@
+<app-navbar-rieltor-admin></app-navbar-rieltor-admin>
+
+<!-- Apartment Statistics Section -->
+<h2>Apartment Statistics</h2>
+
+<!-- Daily Apartments Chart -->
+<div *ngIf="dailyChartData && dailyChartData.datasets" style="display: block; width: 100%; height: 400px;">
+    <canvas baseChart
+            [datasets]="dailyChartData.datasets"
+            [labels]="dailyChartData.labels"
+            [options]="chartOptions"
+            [type]="'bar'">
+    </canvas>
+</div>
+
+<!-- Weekly Apartments Chart -->
+<div *ngIf="weeklyChartData && weeklyChartData.datasets" style="display: block; width: 100%; height: 400px;">
+    <canvas baseChart
+            [datasets]="weeklyChartData.datasets"
+            [labels]="weeklyChartData.labels"
+            [options]="chartOptions"
+            [type]="'bar'">
+    </canvas>
+</div>
+
+<!-- Monthly Apartments Chart -->
+<div *ngIf="monthlyChartData && monthlyChartData.datasets" style="display: block; width: 100%; height: 400px;">
+    <canvas baseChart
+            [datasets]="monthlyChartData.datasets"
+            [labels]="monthlyChartData.labels"
+            [options]="chartOptions"
+            [type]="'bar'">
+    </canvas>
+</div>
+
+<!-- Ad Status Chart -->
+<div *ngIf="adStatusChartData && adStatusChartData.datasets" style="display: block; width: 100%; height: 400px;">
+    <canvas baseChart
+            [datasets]="adStatusChartData.datasets"
+            [labels]="adStatusChartData.labels"
+            [options]="chartOptions"
+            [type]="'pie'">
+    </canvas>
+</div>
+
+<hr>
+
+<!-- Order Statistics Section -->
+<h2>Order Statistics</h2>
+
+<!-- Daily Orders Chart -->
+<div *ngIf="dailyOrderStats && dailyOrderStats.datasets" style="display: block; width: 100%; height: 400px;">
+    <canvas baseChart
+            [datasets]="dailyOrderStats.datasets"
+            [labels]="dailyOrderStats.labels"
+            [options]="chartOptions"
+            [type]="'bar'">
+    </canvas>
+</div>
+
+<!-- Weekly Orders Chart -->
+<div *ngIf="weeklyOrderStats && weeklyOrderStats.datasets" style="display: block; width: 100%; height: 400px;">
+    <canvas baseChart
+            [datasets]="weeklyOrderStats.datasets"
+            [labels]="weeklyOrderStats.labels"
+            [options]="chartOptions"
+            [type]="'bar'">
+    </canvas>
+</div>
+
+<!-- Monthly Orders Chart -->
+<div *ngIf="monthlyOrderStats && monthlyOrderStats.datasets" style="display: block; width: 100%; height: 400px;">
+    <canvas baseChart
+            [datasets]="monthlyOrderStats.datasets"
+            [labels]="monthlyOrderStats.labels"
+            [options]="chartOptions"
+            [type]="'bar'">
+    </canvas>
+</div>
