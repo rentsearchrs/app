@@ -71,7 +71,7 @@ export class AgentDashboardComponent implements OnInit {
   }
   applyWatermark(imageId: number, apartmentId: number): void {
     const token = localStorage.getItem('token');
-    this.http.put(`http://127.0.0.1:8000/apartments/${apartmentId}/apply_watermark/${imageId}`, {}, {
+    this.http.put(`https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/apartments/${apartmentId}/apply_watermark/${imageId}`, {}, {
         headers: new HttpHeaders().set('Authorization', `Bearer ${token}`)
     }).subscribe(
         () => {
@@ -85,7 +85,7 @@ export class AgentDashboardComponent implements OnInit {
 }
 removeWatermarkAI(imageId: number, apartmentId: number): void {
   const token = localStorage.getItem('token');
-  this.http.put(`http://127.0.0.1:8000/apartments/${apartmentId}/remove_watermark_ai/${imageId}`, {}, {
+  this.http.put(`https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/apartments/${apartmentId}/remove_watermark_ai/${imageId}`, {}, {
       headers: new HttpHeaders().set('Authorization', `Bearer ${token}`)
   }).subscribe(
       () => {
@@ -136,7 +136,7 @@ removeWatermarkAI(imageId: number, apartmentId: number): void {
 
   fetchApartments(agentId: number): void {
     const token = localStorage.getItem('token');
-    this.http.get<any[]>(`http://127.0.0.1:8000/agents/${agentId}/apartments/`, {
+    this.http.get<any[]>(`https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/agents/${agentId}/apartments/`, {
       headers: new HttpHeaders().set('Authorization', `Bearer ${token}`)
     }).subscribe(
       (data) => {
@@ -157,7 +157,7 @@ removeWatermarkAI(imageId: number, apartmentId: number): void {
     }
 
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    this.http.get<any>(`http://127.0.0.1:8000/agents/${agentId}/notifications/`, { headers })
+    this.http.get<any>(`https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/agents/${agentId}/notifications/`, { headers })
       .subscribe(
         (data) => {
           this.notifications = data.notifications || [];
@@ -188,7 +188,7 @@ removeWatermarkAI(imageId: number, apartmentId: number): void {
     }
 
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    const url = `http://127.0.0.1:8000/apartments/${apartmentId}/${status}`;
+    const url = `https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/apartments/${apartmentId}/${status}`;
     this.http.put(url, {}, { headers })
       .subscribe(
         () => {
@@ -236,7 +236,7 @@ removeWatermarkAI(imageId: number, apartmentId: number): void {
         const formData = new FormData();
         Array.from(files).forEach(file => formData.append('files', file));
 
-        this.http.post(`http://127.0.0.1:8000/apartments/${apartmentId}/upload_images`, formData)
+        this.http.post(`https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/apartments/${apartmentId}/upload_images`, formData)
             .subscribe(
                 () => {
                     console.log('Images uploaded with watermark successfully');
@@ -251,7 +251,7 @@ removeWatermarkAI(imageId: number, apartmentId: number): void {
 
 
   deleteImage(imageId: number): void {
-    this.http.delete(`http://127.0.0.1:8000/images/${imageId}`)
+    this.http.delete(`https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/images/${imageId}`)
       .subscribe(
         () => {
           console.log(`Image ${imageId} deleted successfully`);
@@ -278,7 +278,7 @@ removeWatermarkAI(imageId: number, apartmentId: number): void {
       new_order: index,
     }));
   
-    this.http.put(`http://127.0.0.1:8000/apartments/${apartmentId}/reorder_images`, orderUpdates)
+    this.http.put(`https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/apartments/${apartmentId}/reorder_images`, orderUpdates)
       .subscribe(
         () => {
           console.log('Image order updated successfully');
