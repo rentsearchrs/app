@@ -6,45 +6,45 @@ import { catchError, map, Observable, of, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class ApartmentService {
-  private apiUrl = 'http://127.0.0.1:8000/get_orders_and_photo_all/';
-  private norm = 'http://127.0.0.1:8000'
-  private BASE_URL = 'http://127.0.0.1:8000';
+  private apiUrl = 'https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/get_orders_and_photo_all/';
+  private norm = 'https://lviv-pject-git-main-rentsearchrs-projects.vercel.app'
+  private BASE_URL = 'https://lviv-pject-git-main-rentsearchrs-projects.vercel.app';
 
   constructor(private http: HttpClient) { }
   getTrapWords() {
-    return this.http.get<string[]>('http://127.0.0.1:8000/admin/get_traps');
+    return this.http.get<string[]>('https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/admin/get_traps');
   }
 
   getStopWords() {
-    return this.http.get<string[]>('http://127.0.0.1:8000/admin/get_stop_words');
+    return this.http.get<string[]>('https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/admin/get_stop_words');
   }
 
   getVerificationAds() {
-    return this.http.get<any[]>('http://127.0.0.1:8000/admin/verification_ads');
+    return this.http.get<any[]>('https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/admin/verification_ads');
   }
 
   addTrapWord(word: string) {
-    return this.http.post('http://127.0.0.1:8000/admin/add_trap/', { word });
+    return this.http.post('https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/admin/add_trap/', { word });
   }
 
   removeTrapWord(word: string) {
-    return this.http.delete(`http://127.0.0.1:8000/admin/remove_trap/${word}`);
+    return this.http.delete(`https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/admin/remove_trap/${word}`);
   }
 
   approveApartment(id: number) {
-    return this.http.put(`http://127.0.0.1:8000/admin/verify_ad/${id}`, { decision: "relevant" });
+    return this.http.put(`https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/admin/verify_ad/${id}`, { decision: "relevant" });
   }
 
   rejectApartment(id: number) {
-    return this.http.put(`http://127.0.0.1:8000/admin/verify_ad/${id}`, { decision: "spam" });
+    return this.http.put(`https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/admin/verify_ad/${id}`, { decision: "spam" });
   }
 
   runParser() {
-    return this.http.post('http://127.0.0.1:8000/admin/run_parser/', {});
+    return this.http.post('https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/admin/run_parser/', {});
   }
 
   runAutoPosting() {
-    return this.http.post('http://127.0.0.1:8000/admin/start_auto_posting/', {});
+    return this.http.post('https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/admin/start_auto_posting/', {});
   }
 
   getApartments(): Observable<any> {
@@ -54,11 +54,11 @@ export class ApartmentService {
     return this.http.post(`${this.BASE_URL}/assign_apartments/auto`, {});
   }
   getApartmentsByStatus(status: string): Observable<any[]> {
-    return this.http.get<any[]>(`http://127.0.0.1:8000/apartments/${status}`);
+    return this.http.get<any[]>(`https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/apartments/${status}`);
   }
   // Delete Image
   deleteImage(imageId: number): Observable<any> {
-    return this.http.delete<any>(`http://127.0.0.1:8000/images/${imageId}`);
+    return this.http.delete<any>(`https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/images/${imageId}`);
   }  
   // Upload New Image
   uploadImage(apartmentId: number, formData: FormData): Observable<any> {
@@ -71,13 +71,13 @@ export class ApartmentService {
     return this.http.put(`${this.BASE_URL}/apartments/${apartmentId}/reorder_images`, orderUpdates);
   }
   updateApartmentFixFields(apartmentId: number, updateData: any): Observable<any> {
-    const url = `http://127.0.0.1:8000/apartments/${apartmentId}/update_fix_fields`;
+    const url = `https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/apartments/${apartmentId}/update_fix_fields`;
     return this.http.put<any>(url, updateData);
   
   }
   updateApartmentStatus(apartmentId: number, newStatus: string): Observable<any> {
     return this.http.put(
-        `http://127.0.0.1:8000/get_orders_and_photo_all/${apartmentId}/status?new_status=${newStatus}`,
+        `https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/get_orders_and_photo_all/${apartmentId}/status?new_status=${newStatus}`,
         {}
     );
   }
