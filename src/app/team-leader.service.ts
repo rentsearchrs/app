@@ -17,7 +17,7 @@ export interface TeamLeaderRealtorsResponse {
   providedIn: 'root'
 })
 export class TeamLeaderService {
-  private baseUrl = 'http://127.0.0.1:8000';
+  private baseUrl = 'https://lviv-pject-git-main-rentsearchrs-projects.vercel.app';
 
   constructor(private http: HttpClient) {}
 
