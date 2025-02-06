@@ -34,7 +34,7 @@ export class AdminPageComponent {
     payload.append('username', this.username);
     payload.append('password', this.password);
   
-    this.http.post<any>('http://127.0.0.1:8000/login', payload.toString(), {
+    this.http.post<any>('https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/login', payload.toString(), {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     }).subscribe(
       (response) => {
