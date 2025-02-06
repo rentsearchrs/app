@@ -81,28 +81,28 @@ export class MainPageComponent implements OnInit {
 
   // ✅ Start Parser
   startParser(): void {
-    this.http.get('http://127.0.0.1:8000/start_scraping/', {}).subscribe(() => {
+    this.http.get('https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/start_scraping/', {}).subscribe(() => {
       alert('Parser started');
     });
   }
 
   // ✅ Stop Parser
   stopParser(): void {
-    this.http.get('http://127.0.0.1:8000/stop_scraping/', {}).subscribe(() => {
+    this.http.get('https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/stop_scraping/', {}).subscribe(() => {
       alert('Parser stopped');
     });
   }
 
   // ✅ Start Auto Posting
   startAutoPosting(): void {
-    this.http.get('http://127.0.0.1:8000/start_autoposting/', {}).subscribe(() => {
+    this.http.get('https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/start_autoposting/', {}).subscribe(() => {
       alert('Auto posting started');
     });
   }
 
   // ✅ Stop Auto Posting
   stopAutoPosting(): void {
-    this.http.get('http://127.0.0.1:8000/stop_autoposting/', {}).subscribe(() => {
+    this.http.get('https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/stop_autoposting/', {}).subscribe(() => {
       alert('Auto posting stopped');
     });
   }
@@ -138,7 +138,7 @@ export class MainPageComponent implements OnInit {
   }
 
   applyWatermark(imageId: number, apartmentId: number): void {
-    this.http.put(`http://127.0.0.1:8000/apartments/${apartmentId}/apply_watermark/${imageId}`, {}, {
+    this.http.put(`https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/apartments/${apartmentId}/apply_watermark/${imageId}`, {}, {
     }).subscribe(
         () => {
             alert('Watermark applied successfully!');
@@ -150,7 +150,7 @@ export class MainPageComponent implements OnInit {
     );
 }
 removeWatermarkAI(imageId: number, apartmentId: number): void {
-  this.http.put(`http://127.0.0.1:8000/apartments/${apartmentId}/remove_watermark_ai/${imageId}`, {}, {
+  this.http.put(`https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/apartments/${apartmentId}/remove_watermark_ai/${imageId}`, {}, {
 
   }).subscribe(
       () => {
@@ -289,7 +289,7 @@ removeWatermarkAI(imageId: number, apartmentId: number): void {
       const formData = new FormData();
       Array.from(files).forEach(file => formData.append('files', file));
   
-      this.http.post(`http://127.0.0.1:8000/apartments/${apartmentId}/upload_images`, formData)
+      this.http.post(`https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/apartments/${apartmentId}/upload_images`, formData)
         .subscribe(() => {
           this.getAllAds();  // Refresh list after upload
         });
@@ -297,7 +297,7 @@ removeWatermarkAI(imageId: number, apartmentId: number): void {
   }
   
   deleteImage(imageId: number): void {
-    this.http.delete(`http://127.0.0.1:8000/images/${imageId}`)
+    this.http.delete(`https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/images/${imageId}`)
       .subscribe(() => {
         this.getAllAds();  // Refresh list after deletion
       });
@@ -334,7 +334,7 @@ removeWatermarkAI(imageId: number, apartmentId: number): void {
   
     // Send updates to the backend
     this.http.put(
-      `http://127.0.0.1:8000/apartments/${apartmentId}/reorder_images`,
+      `https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/apartments/${apartmentId}/reorder_images`,
       orderUpdates
     ).subscribe(
       () => {
@@ -451,7 +451,7 @@ autoAssign() {
 }
   // Fetch Trap Words (Blacklist)
   fetchTrapWords(): void {
-    this.http.get<string[]>('http://127.0.0.1:8000/admin/get_traps').subscribe(
+    this.http.get<string[]>('https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/admin/get_traps').subscribe(
       data => this.trapWords = data,
       error => console.error('Error fetching trap words:', error)
     );
@@ -459,7 +459,7 @@ autoAssign() {
 
   // Fetch Stop Words
   fetchStopWords(): void {
-    this.http.get<string[]>('http://127.0.0.1:8000/admin/get_stop_words').subscribe(
+    this.http.get<string[]>('https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/admin/get_stop_words').subscribe(
       data => this.stopWords = data,
       error => console.error('Error fetching stop words:', error)
     );
@@ -467,7 +467,7 @@ autoAssign() {
 
   // Fetch Apartments Needing Verification
   fetchVerificationApartments(): void {
-    this.http.get<any[]>('http://127.0.0.1:8000/admin/verification_ads').subscribe(
+    this.http.get<any[]>('https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/admin/verification_ads').subscribe(
       data => this.verificationApartments = data,
       error => console.error('Error fetching verification ads:', error)
     );
@@ -475,7 +475,7 @@ autoAssign() {
 
   // Add Trap Word (Blacklist)
   addTrapWord(): void {
-    this.http.post('http://127.0.0.1:8000/admin/add_trap/', { word: this.newTrapWord }).subscribe(() => {
+    this.http.post('https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/admin/add_trap/', { word: this.newTrapWord }).subscribe(() => {
       this.fetchTrapWords();
       this.newTrapWord = '';
     });
@@ -483,14 +483,14 @@ autoAssign() {
 
   // Remove Trap Word
   removeTrapWord(word: string): void {
-    this.http.delete(`http://127.0.0.1:8000/admin/remove_trap/${word}`).subscribe(() => {
+    this.http.delete(`https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/admin/remove_trap/${word}`).subscribe(() => {
       this.fetchTrapWords();
     });
   }
 
   // Add Stop Word
   addStopWord(): void {
-    this.http.post('http://127.0.0.1:8000/admin/add_stop_word/', { word: this.newStopWord }).subscribe(() => {
+    this.http.post('https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/admin/add_stop_word/', { word: this.newStopWord }).subscribe(() => {
       this.fetchStopWords();
       this.newStopWord = '';
     });
@@ -498,35 +498,35 @@ autoAssign() {
 
   // Remove Stop Word
   removeStopWord(word: string): void {
-    this.http.delete(`http://127.0.0.1:8000/admin/remove_stop_word/${word}`).subscribe(() => {
+    this.http.delete(`https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/admin/remove_stop_word/${word}`).subscribe(() => {
       this.fetchStopWords();
     });
   }
 
   // Approve Apartment for Posting
   approveApartment(apartmentId: number): void {
-    this.http.put(`http://127.0.0.1:8000/admin/verify_ad/${apartmentId}`, { decision: "relevant" }).subscribe(() => {
+    this.http.put(`https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/admin/verify_ad/${apartmentId}`, { decision: "relevant" }).subscribe(() => {
       this.fetchVerificationApartments();
     });
   }
 
   // Reject Apartment (Move to Spam)
   rejectApartment(apartmentId: number): void {
-    this.http.put(`http://127.0.0.1:8000/admin/verify_ad/${apartmentId}`, { decision: "spam" }).subscribe(() => {
+    this.http.put(`https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/admin/verify_ad/${apartmentId}`, { decision: "spam" }).subscribe(() => {
       this.fetchVerificationApartments();
     });
   }
 
   // Run Parser
   runParser(): void {
-    this.http.post('http://127.0.0.1:8000/admin/run_parser/', {}).subscribe(() => {
+    this.http.post('https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/admin/run_parser/', {}).subscribe(() => {
       alert('Parser started successfully!');
     });
   }
 
   // Run Auto Posting
   runAutoPosting(): void {
-    this.http.post('http://127.0.0.1:8000/admin/start_auto_posting/', {}).subscribe(() => {
+    this.http.post('https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/admin/start_auto_posting/', {}).subscribe(() => {
       alert('Auto Posting started successfully!');
     });
   }
