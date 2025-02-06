@@ -34,7 +34,7 @@ export class StatisticComponent implements OnInit{
     private authService: AuthService
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
-    this.apiUrl = `http://127.0.0.1:8000/agents/${this.authService.getAgentId()}/apartments`;
+    this.apiUrl = `https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/agents/${this.authService.getAgentId()}/apartments`;
   }
 
   ngOnInit(): void {
