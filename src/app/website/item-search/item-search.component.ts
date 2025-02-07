@@ -62,7 +62,7 @@ export class ItemSearchComponent implements OnInit, AfterViewInit{
   }
 
   fetchData(): void {
-    const apiUrl = 'http://127.0.0.1:8000/get_orders_and_photo/';
+    const apiUrl = 'https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/get_orders_and_photo/';
 
     this.http.get<any[]>(apiUrl).subscribe(
       (data) => {
