@@ -23,7 +23,7 @@ export class ItemPageComponent implements OnInit {
   }
 
   fetchProduct(id: string): void {
-    const apiUrl = `http://127.0.0.1:8000/get_apartment_and_photo/${id}/`;
+    const apiUrl = `https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/get_apartment_and_photo/${id}/`;
     this.http.get<any>(apiUrl).subscribe(
       (data) => {
         this.product = data; // Assign the fetched product to the `product` variable
@@ -35,7 +35,7 @@ export class ItemPageComponent implements OnInit {
   }
 
   fetchRandomRecommendations(): void {
-    const apiUrl = `http://127.0.0.1:8000/get_orders_and_photo/`;
+    const apiUrl = `https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/get_orders_and_photo/`;
     this.http.get<any[]>(apiUrl).subscribe(
       (data) => {
         this.recommendations = this.getRandomItems(data, 5); // Fetch 5 random items
