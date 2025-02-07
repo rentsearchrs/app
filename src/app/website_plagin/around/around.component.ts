@@ -37,7 +37,7 @@ export class AroundComponent {
   
     console.log('Form Data:', requestData);
   
-    this.http.post('http://127.0.0.1:8000/orders/', requestData).subscribe({
+    this.http.post('https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/orders/', requestData).subscribe({
       next: (response) => {
         console.log('Order saved:', response);
         alert('Form submitted successfully!');
