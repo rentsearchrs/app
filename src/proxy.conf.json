@@ -1,0 +1,8 @@
+{
+    "/api": {
+      "target": "https://lviv-pject.vercel.app",
+      "secure": false,
+      "changeOrigin": true
+    }
+  }
+  
