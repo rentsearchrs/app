@@ -18,7 +18,7 @@ export interface OrderStatusUpdateResponse {
   providedIn: 'root'
 })
 export class OrderService {
-  private baseUrl = 'https://lviv-pject-git-main-rentsearchrs-projects.vercel.app'; // Base API URL
+  private baseUrl = 'https://lviv-pject.vercel.app'; // Base API URL
   private ordersApiUrl = `${this.baseUrl}/get_orders/`; // Endpoint for orders
 
   constructor(private http: HttpClient) {}

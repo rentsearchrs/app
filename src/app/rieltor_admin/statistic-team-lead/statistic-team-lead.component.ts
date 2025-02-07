@@ -15,7 +15,7 @@ export class StatisticTeamLeadComponent implements OnInit {
   realtorStats: any[] = [];
   chartOptions: any;
 
-  apiUrl = 'https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/team_leader';
+  apiUrl = 'https://lviv-pject.vercel.app/team_leader';
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,

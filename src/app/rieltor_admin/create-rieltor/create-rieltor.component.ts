@@ -28,7 +28,7 @@ export class CreateRieltorComponent  implements OnInit {
 
   onSubmit() {
     if (this.rieltorForm.valid) {
-      this.http.post('https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/users', this.rieltorForm.value).subscribe({
+      this.http.post('https://lviv-pject.vercel.app/users', this.rieltorForm.value).subscribe({
         next: (response) => console.log('User created successfully', response),
         error: (error) => console.error('Error creating user', error),
       });

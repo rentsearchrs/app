@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ChanelAdminService {
-  private baseUrl = 'https://lviv-pject-git-main-rentsearchrs-projects.vercel.app';
+  private baseUrl = 'https://lviv-pject.vercel.app';
 
   constructor(private http: HttpClient) {}
 

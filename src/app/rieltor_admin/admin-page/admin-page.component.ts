@@ -34,7 +34,7 @@ export class AdminPageComponent {
     payload.append('username', this.username);
     payload.append('password', this.password);
   
-    this.http.post<any>('https://lviv-pject.vercel.app//login', payload.toString(), {
+    this.http.post<any>('https://lviv-pject.vercel.app/login', payload.toString(), {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     }).subscribe(
       (response) => {
