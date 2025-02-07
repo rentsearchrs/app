@@ -30,7 +30,7 @@ export class SwiperPersonComponent implements AfterViewInit {
   }
 
   fetchRealtors(): void {
-    const apiUrl = 'http://127.0.0.1:8000/realtors/'; // API endpoint
+    const apiUrl = 'https://lviv-pject-git-main-rentsearchrs-projects.vercel.app/realtors/'; // API endpoint
     this.http.get<any[]>(apiUrl).subscribe(
       (data) => {
         this.realtors = data;
