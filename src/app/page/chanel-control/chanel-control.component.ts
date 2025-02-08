@@ -16,7 +16,7 @@ export class ChanelControlComponent implements OnInit {
   priceFrom?: number;
   priceTo?: number;
   locationType: string = 'all';  // Default to 'all'
-  private apiUrl = 'https://lviv-pject.vercel.app/';  // Your FastAPI backend URL
+  private apiUrl = 'https://lviv-pject.vercel.app';  // Your FastAPI backend URL
   categories = ['sent to telegram channel', 'successful'];
   typeDeals = ['kvartiry', 'doma', 'posutochno-pochasovo'];
   typeObjects = ['posutochno-pochasovo-doma', 'posutochno-pochasovo-kvartiry', 'dolgosrochnaya-arenda-kvartir', 'arenda-domov', 'prodazha-kvartir', 'prodazha-domov'];
